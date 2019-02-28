@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>原型和原型链</title>
+</head>
+<body>
+  <div>
+    <img style="width: 100%" src="./原型原型链.png" alt="">
+  </div>
+  <script>
+    // prototype 原型
+    // __proto__ 原型链
+    function Fn () {
+      this.x = 100
+      this.y = 200
+      this.getX = function () {
+        console.log(this.x)
+      }
+    }
+    Fn.prototype.getX = function () {
+      console.log(this.x)
+    }
+    Fn.prototype.getY = function () {
+      console.log(this.y)
+    }
+    var f1 = new Fn()
+    var f2 = new Fn()
+    // 1、每一个函数（类）都有一个prototype（原型）属性，这个属性是一个对象，包含了可供这个类的实例所调取的公有方法和属性
+    //   2、浏览器默认给原型开辟的堆内存中存放了一个属性‘constructor’，存放的实当前类本身
+    //   3、每一个对象实例都有一个__proto__（原型链）属性，指向的实当前实例所属的类的原型（不确定所属的类都指向Object.prototype）
+    console.log(f1.__proto__ === Fn.prototype)
+    console.log(f1.constructor) // Fn
+    console.log(f1.getX === f2.getX)
+    console.log(f1.getX() === f2.getX())
+    console.log(f1.getX)
+    console.log(f2.getX)
+    console.log(f1.__proto__.getX()) //  undefined
+    console.log('y')
+    console.log(f1.getY === f2.getY)
+    console.log(f1)
+    console.log(f1.getX.prototype.constructor) 
+    console.log(f1.getX.__proto__ === Function.prototype) //true
+  </script>
+</body>
+</html>

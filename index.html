@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>MyVue</title>
+</head>
+<body>
+  <div id="app">
+    <input type="text" v-model="msg">
+    <div v-show="show">
+      <li>{{person.name}}</li>
+      <li>{{person.age}}</li>
+    </div>
+    <p v-if="if">if true</p>
+    <p>{{msg}}</p>
+    <button :disabled="disabled">btn</button>
+    <button @click="changeShow">changeShow</button>
+    {{msg}}
+  </div>
+  <script src="./MyVue/Watcher.js"></script>
+  <script src="./MyVue/Dep.js"></script>
+  <script src="./MyVue/Compile.js"></script>
+  <script src="./MyVue/Observe.js"></script>
+  <script src="./MyVue/MyVue.js"></script>
+  <script>
+    let vm = new MyVue({
+      el: '#app',
+      data: {
+        msg: 'hello',
+        show: true,
+        if: true,
+        person: {
+          name: 'lee',
+          age: 30
+        },
+        disabled: true
+      },
+      methods: {
+        changeShow () {
+          // console.log(this.disabled)
+          this.show = !this.show
+          this.if = !this.if
+          this.disabled = !this.disabled
+        }
+      }
+    })
+  </script>
+</body>
+</html>

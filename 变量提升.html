@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <img style="width: 100%" src="./变量提升.png" alt="">
+  <script>
+      var foo = 1
+      function fn () {
+        if (!foo) {
+          var foo = 10
+        }
+        console.log(foo)
+      }
+      fn()
+      // ...变量提升
+      var n=0
+      function a () {
+        var n = 10
+        function b () {
+          n++
+          console.log(n)
+        }
+        b()
+        return b
+      }
+      var c = a()
+      c()
+      console.log(n)
+      // 。。。。...
+      function fn1 (x,y) {
+        // JS非严格模式，形参与实参arguments的映射关系只发生在函数执行后，形参赋值的时候，以后不会再建立映射
+        //  JS严格模式,当前作用域第一行 'use strict'
+        console.log(x,y) // 2 undefined
+        arguments[0] = 4
+        arguments[1] = 5
+        console.log(x,y) // 4 undefined
+
+      }
+      fn1(2)
+      function fn2 (x,y) {
+        'use strict'
+        // 严格模式下是不会映射的
+        console.log(x,y) // 10 undefined
+        arguments[0] = 'use strict'
+        console.log(x,y) // 10 undefined
+      }
+      fn2(10)
+      // this指向问题
+      //  fn() 里面的this指向是window，严格模式下是undefined
+      // obj.fn() 里面的this指向是obj
+      var num = 10
+      var obj = {num: 20}
+      obj.fn = function fn3 (num) {
+        this.num += num
+        num += this.num
+        return function () {
+          this.num += ++num
+          console.log(num)
+        }
+      } (num)
+      obj.fn()                                        
+  </script>
+</body>
+</html>

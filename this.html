@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>this</title>
+</head>
+<body>
+  <!-- 
+    this
+    1.元素绑定事件，方法中的this是当前操作的元素
+    2.方法名前面有点tom.show(),show()中的this是tom,如果方法名前面没点，则方法中的this是window，严格模式下是undefined
+    3.构造函数执行，this是当前类的实例
+   -->
+   <script>
+    var language='vue'
+    var tom = {
+      language: 'react',
+      like: function () {
+        console.log(this)
+        console.log(this.language)
+      },
+      wait: function () {
+        var run = this.like
+        run() // vue
+        this.like() // react
+      }
+    }
+    tom.wait()
+    const obj = {
+      fn1: function () {
+        console.log(this) // obj
+      },
+      fn: () => {
+        console.log(this) //window
+      }
+    }
+    obj.fn()
+    obj.fn1()
+    // ................类
+    function Person (name) {
+      this.name = name
+      setTimeout(() => {console.log(this)},1000) //this - Person的实例
+      setTimeout(function () {console.log(this)},1000) // this - Window
+    }
+    var Li = new Person('lee')
+   </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+      // JS中的内存分为堆内存和栈内存
+      /*
+        堆内存：储存引用类型值（对象、数组：键值对 ，函数： 字符串代码块）
+        栈内存： 储存基本类型值（nudefined,string,boolean,number,null）和提供JS代码执行环境
+        释放堆内存： 让引用堆内存空间地址的变量赋值为 null（使没有变量指向这个堆内存地址）
+        栈内存释放： 一般来说JS代码执行完之后形成的私有作用域（栈内存）便释放了，栈内存中储存的基本值也释放了。
+        不释放栈内存的情况： 1、 栈内存中储存的基本值被栈内存以外的变量所占用，此时不能释放栈内存 2、 全局栈内存只在页面销毁的时候才释放
+      */
+    var n=10
+    function fn () {
+      var n=20
+      function f () {
+        // 上级作用域与函数执行的地方无关，只和创建位置有关
+        n++
+        console.log(n)
+      }
+      f()
+      return f
+    }
+    var x = fn()
+    x()
+    x()
+    console.log(n)
+  </script>
+</body>
+</html>

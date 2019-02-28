@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>单例模式</title>
+</head>
+<body>
+  <script>
+    // 高级单例模式 singleton parrtern
+    // 1、在给命名空间赋值的时候，不是直接赋值一个对象，而是先给执行一个函数形成一个不销毁的栈内存（私有作用域），在这个私有作用域中创建1个或多个堆内存空间，然后把这些需要供外界使用的堆内存空间的地址赋值给命名空间
+    // 2、灵活：需要暴露给外界使用的就暴露
+    const disnRender = (function () {
+      function design () {
+        console.log(design)
+      }
+      // .....
+      return {
+        design
+      }
+    })()
+    // 工厂模式： Factory Parrtern 
+    // 把实现相同功能的代码进行封装，以实现批量生产，以后想要实现这些功能只需要执行函数
+    function makeProds (name, year) {
+      var prod = {}
+      prod.name = name
+      prod.year = year
+      prod.product = function () {console.log('do')}
+      return prod
+    }
+    var prod1 = makeProds('ball', 2015)
+  </script>
+</body>
+</html>

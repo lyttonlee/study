@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>字符串转换</title>
+</head>
+<body>
+  <script>
+    const str = 'get-same-name'
+    
+    function convertStr (str) {
+      const arr = str.split('-')
+      for (let i = 1; i < arr.length; i++) {
+        arr[i] = arr[i][0].toUpperCase() + arr[i].substr(1, arr[i].length - 1)
+      }
+      const newStr = arr.join('')
+      return newStr
+    }
+    console.log(convertStr(str))
+
+    
+    const nums = [5,9,3,4,12,64]
+
+    // 冒泡排序
+    
+    for (let i = 0; i < nums.length - 1; i++) {
+      for (let j = 0; j < nums.length - 1 - i; j++) {
+        if (nums[j] < nums[j+1]) {
+          const temp = nums[j]
+          nums[j] = nums[j+1]
+          nums[j+1] = temp
+        }
+      }
+    }
+    console.log(nums)
+    // 选择排序(先找出所有数中最小的，放在第一个，在剩余数中找出最小的放在第二个，..............)
+    for (let i = 0; i < nums.length; i++) {
+      const minIndex = i
+      for (let j = 1; j < nums.length; j++) {
+        
+      }
+    }
+    // 数组去重
+    const hasSameElArr = ['a', 'a', 4, 5, 2, 'b', 2, 'a']
+    function deleteSameEl (arr) {
+      const newArr = []
+      newArr.push(arr[0])
+      for (let i = 0; i < arr.length; i++) {
+        for (let j = 0; j < newArr.length; j++) {
+          if (arr[i] === newArr[j]) {
+            break
+          }
+          if (j === newArr.length - 1) {
+            newArr.push(arr[i])
+          }
+        }
+      }
+      return newArr
+    }
+    console.log(deleteSameEl(hasSameElArr))
+  </script>
+</body>
+</html>

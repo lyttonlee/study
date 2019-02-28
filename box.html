@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>盒模型BOX</title>
+  <style>
+    html>* {
+      padding: 0;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+  <!-- 盒模型 content padding boder margin -->
+  <!-- 标准模型 宽高为content宽高 box-sizing: content-box -->
+  <!-- IE模型 宽高为content + padding + border , box-sizing: boder-box -->
+  <!-- 
+    获取盒模型宽高的方法：
+    1、 dom.style.width/height (此方法只能获取内联设置的宽高，使用link,style 链接的css设置的宽高不能获取)
+    2、 dom.currentlyStyle.width/height
+    3、 window.getComputedStyle(dom).width
+    4、 dom.getBoundingClientRect().width
+   -->
+   <!-- BFC Block Formatting Context 块级格式化上下文 -->
+  
+  <div id="test" style="width: 100px">
+    <style>
+      #test {
+        height:  300px;
+      }
+    </style>
+    haha
+  </div>
+  <script>
+    const test = document.getElementById('test')
+    console.log(test.style.width)
+    // console.log(window.getComputedStyle(test).width)
+    console.log(test.getBoundingClientRect().width)
+  </script>
+</body>
+</html>

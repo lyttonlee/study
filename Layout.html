@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>页面布局Layout</title>
+  <style>
+    html * {
+      margin: 0;
+      padding: 0;
+    }
+    .layout {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <!-- float布局 -->
+  <section class="layout float">
+    <style>
+      .layout.float .box .left {
+        width: 300px;
+        float: left;
+        background-color: aqua;
+      }
+      .layout.float .box .center {
+        background-color: red;
+      }
+      .layout.float .box .right {
+        width: 300px;
+        float: right;
+        background-color: bisque;
+      }
+    </style>
+    <article class="box">
+      <div class="left">left</div>
+      
+      <div class="right">right</div>
+      <div class="center">float center</div>
+    </article>
+  </section>
+  <!-- absolute -->
+  <section class="layout absolute">
+    <style>
+      .layout.absolute {
+        margin-top: 40px;
+      }
+      .layout.absolute .box div {
+        position: absolute;
+      }
+      .layout.absolute .box .left {
+        left: 0;
+        width: 300px;
+        background-color: aqua;
+      }
+      .layout.absolute .box .center {
+        left: 300px;
+        right: 300px;
+        background-color: red;
+      }
+      .layout.absolute .box .right {
+        right: 0;
+        width: 300px;
+        background-color: bisque;
+      }
+    </style>
+    <article class="box">
+      <div class="left">left</div>
+      <div class="center">absolute center</div>
+      <div class="right">right</div>
+    </article>
+  </section>
+  <!-- flex -->
+  <section class="layout flex">
+    <style>
+      .layout.flex {
+        margin-top: 70px;
+      }
+      .layout.flex .box {
+        display: flex;
+      }
+      .layout.flex .box .left {
+        width: 300px;
+        background-color: aqua;
+      }
+      .layout.flex .box .center {
+        flex: 1;
+        background-color: red;
+      }
+      .layout.flex .box .right {
+        width: 300px;
+        background-color: bisque;
+      }
+    </style>
+    <article class="box">
+      <div class="left">left</div>
+      <div class="center">flex center</div>
+      <div class="right">right</div>
+    </article>
+  </section>
+  <!-- table -->
+  <section class="layout table">
+    <style>
+      .layout.table .box {
+        display: table;
+      }
+      .layout.table .box .left {
+        width: 300px;
+        /* display: table-cell; */
+        background-color: aqua;
+      }
+      .layout.table .box .center {
+        width: 100%;
+        display: table-cell;
+        background-color: red;
+      }
+      .layout.table .box .right {
+        width: 300px;
+        /* display: table-cell; */
+        background-color: bisque;
+      }
+    </style>
+    <article class="box">
+      <div class="left">left</div>
+      <div class="center">table center</div>
+      <div class="right">right</div>
+    </article>
+  </section>
+  <!-- grid -->
+  <section class="layout grid">
+    <style>
+      .layout.grid .box {
+        display: grid;
+        grid-template-columns: 300px auto 300px;
+      }
+      .layout.grid .box .left {
+        background-color: aqua;
+      }
+      .layout.grid .box .center {
+        background-color: red;
+      }
+      .layout.grid .box .right {
+        background-color: bisque;
+      }
+    </style>
+    <article class="box">
+      <div class="left">left</div>
+      <div class="center">grid center</div>
+      <div class="right">right</div>
+    </article>
+  </section>
+  <!-- grid rows -->
+  <!-- grid 3行布局，上下固定，中间自适应 -->
+  <section class="layout grid-rows">
+    <style>
+      .layout.grid-rows .box {
+        display: grid;
+        grid-template-rows: 100px auto 100px;
+        height: 500px;
+      }
+      .layout.grid-rows .box .header {
+        background-color: aqua;
+      }
+      .layout.grid-rows .box .body {
+        background-color: brown;
+      }
+      .layout.grid-rows .box .footer {
+        background-color: bisque;
+      }
+    </style>
+    <article class="box">
+      <div class="header">header 100</div>
+      <div class="body">body auto</div>
+      <div class="footer">footer 100</div>
+    </article>
+  </section>
+</body>
+</html>

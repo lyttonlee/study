@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>BFC</title>
+</head>
+<body>
+  <!-- BFC block fomatting context 块级格式化上下文 -->
+  <!-- 
+
+    1、 BFC是一个完全独立的布局区域，他的内部布局不会影响外部，同理外部布局也不会影响内部
+    2、 BFC内部的box盒模型margin会发生重叠（取两者最大值）
+    3、 BFC不会与浮动元素重叠
+    4、 BFC内部有浮动元素的话，BFC高度会计算浮动元素的高度
+  -->
+  <!-- 如何形成BFC
+    1 overflow 不为 visable
+    2 position 为 absolute | fixed
+    3 float 不为 none
+    4 display 为 inline-xxx | table-xxx
+  -->
+  <!-- 边界重叠问题 -->
+  <section>
+    <style>
+      .bfc.margin p {
+        margin: 10px;
+        background-color: aqua;
+      }
+      .bfc.margin .abfc {
+        overflow: hidden;
+      }
+    </style>
+    <article class="bfc margin">
+      <p>1</p>
+      <p>2</p>
+      <p>3</p>
+      <div class="abfc">
+        <p>4</p>
+      </div>
+    </article>
+  </section>
+  <!-- bfc不会与浮动元素重叠 -->
+  <section>
+    <style>
+      .float .aside {
+        float: left;
+        background-color: aqua;
+      }
+      .float .main {
+        height: 200px;
+        background-color: brown;
+      }
+    </style>
+    <article class="float">
+      <div class="aside">
+        i am float element
+      </div>
+      <div class="main">
+        <h2>我不是BFC</h2>
+        <p>我的高度有点高</p>
+        <p>我会与左边的浮动元素重叠</p>
+      </div>
+    </article>
+    <style>
+      article {
+        margin: 20px auto;
+      }
+      .bfc-float .aside {
+        float: left;
+        background-color: aqua;
+      }
+      .bfc-float .main {
+        height: 200px;
+        background-color: brown;
+        overflow: hidden;
+      }
+    </style>
+    <article class="bfc-float">
+      <div class="aside">
+        i am float element
+      </div>
+      <div class="main">
+        <h2>我是BFC</h2>
+        <p>我不会与左边的浮动元素重叠</p>
+      </div>
+    </article>
+  </section>
+  <!-- bfc 会计算内部浮动元素的高度 -->
+  <section>
+    <style>
+      .float-height .parent{
+        background-color: aqua;
+      }
+      .float-height .parent .child {
+        float: left;
+        height: 100px;
+        background-color: #f55;
+      }
+      .float-height .parent-bfc {
+        background-color: blue;
+        overflow: hidden;
+      }
+      .float-height .parent-bfc .child {
+        float: left;
+        height: 100px;
+        background-color: #f55;
+      }
+    </style>
+    <article class="float-height">
+      <div class="parent">
+        我不是bfc，我的高度是本身高度
+        <div class="child">浮动子元素</div>
+      </div>
+    </article>
+    <article class="float-height">
+      <div class="parent-bfc">
+        我是bfc，我的高度会计算子元素的高度，所以是100
+        <div class="child">浮动子元素</div>
+      </div>
+    </article>
+  </section>
+</body>
+</html>
