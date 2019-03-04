@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>HTML base</title>
+</head>
+<body>
+  <div id="app">
+    <section>
+      <h2>输入url到渲染完成</h2>
+      <p>
+        1、解析URL，获取IP，向服务器发送请求，获取HTML代码
+        2、解析HTML，向服务器获取所需的css，js,图片等资源
+        3、解析生成dom树
+        4、css与dom树一起生成render tree （render tree <==> layout (回流|重排)）
+        5、布局
+        6、绘制
+      </p>
+    </section>
+    <section>
+      <h2>js面向对象的三大特征</h2>
+      <p>
+        1.封装 （利用函数形成私有作用域，形成保护）
+        (function () {
+          xxx...
+          return {
+            a: fun,
+            b: fun
+          }
+        })()
+        2.继承 （ prototype __proto__， 浅拷贝，深拷贝）
+        3.多态 。。。。
+      </p>
+    </section>
+    <section>
+      <h2>函数的防抖与节流</h2>
+      <p>
+        节流： throttle 连续执行函数，每隔一定时间执行函数，在这个规定的时间内只会有一次函数执行。 滚动事件，连续多次点击。
+      </p>
+      <p>
+        防抖： debounce 在事件执行n秒后再执行函数，如果在这个事件内，事件再次被触发则重新计时。 输入框联想提示
+      </p>
+    </section>
+    <section>
+      <h2>重排（回流）与 重绘</h2>
+      <p>
+        重排（回流 reflow）layout一定会触发 重绘 painting repaint
+      </p>
+      <p>
+        触发 重排（回流）的方式：1、 增加 删减 可见的dom 2、改变窗口大小 3、文字、图片等的改变 4、元素位置或者大小的改变
+      </p>
+      <p>
+        减少重排的方法：1、 创建文档碎片fragment，把要修改的dom树都放进去，全部改完后又重新放回去。
+        2、将要修改的元素影藏，修改完后再显示
+        3、脱离文档流 （position: absolute | fixed）
+      </p>
+    </section>
+    <section>
+      <h2>同源策略</h2>
+      <p>
+        协议，域名，端口 全部一致，不一致就跨域
+      </p>
+      <p>jsonp cors nginx websocket http-proxy</p>
+    </section>
+  </div>
+</body>
+</html>

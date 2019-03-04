@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>事件委托代理</title>
+</head>
+<body>
+  <div id="app">
+    <li class="item">say</li>
+    <li class="item">look</li>
+    <li class="item">walk</li>
+    <li class="item">run</li>
+  </div>
+  <script>
+    // 事件代理： 将事件代理到父元素上执行，可以有效减少事件监听，提高性能（在长列表时候）
+    let app =document.getElementById('app')
+    app.addEventListener('click', (e) => {
+      console.log(e)
+      e.target.nodeName === 'LI' && console.log(e.target.innerHTML)
+    })
+    // let items = app.children
+    // Array.from(items).forEach((item) => {
+    //   item.addEventListener('click', (e) => {
+    //     console.log(e.target.innerHTML)
+    //   })
+    // })
+    // console.log(typeof items)
+
+    // 闭包
+    let arr = [1,2,3,4,5]
+    for (var i = 0; i < arr.length; i++) {
+      setTimeout(function (i) {
+        return function () {
+          console.log(i + 1)
+        }
+      }(i), 1000)
+    }
+  </script>
+</body>
+</html>
