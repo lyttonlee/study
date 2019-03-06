@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <div class="header">
+      <p>header</p>
+    </div>
+    <div class="body">
+      
+    </div>
+    
+  </div>
+  <script>
+    // dom 
+    // HTML dom 定义了HTML元素的对象和属性
+    // dom 节点 文档节点 元素节点 文本节点 注释节点
+    // dom 方法 
+    /*
+      getElementByID()
+      getElementByTagName()
+      getElementByClassName()
+      appendChild()
+      removeChild()
+      replaceChild()
+      insertBefore()
+      creatElement()
+      createNodeText()
+      createAttribute()
+      getAttribute()
+      setAttribute()
+
+    */ 
+    // dom 属性
+    /**
+      dom.innerHTML
+      dom.innerText
+      dom.nodeName
+      dom.nodeValue
+      dom.nodeType (1 element 2 attribute 3 text)
+      dom.attributes
+
+    */ 
+    const app = document.getElementById('app')
+    // console.log(app.nodeValue) null
+    let arr = ['vue', 'react', 'javaScript', 'html', 'css']
+    let  bodyDoms = document.getElementsByClassName('body')
+    // console.log(bodyDoms) > array
+    let ul = document.createElement('ul')
+    for (let i = 0; i < arr.length; i++) {
+      let li = document.createElement('li')
+      let attr = document.createAttribute('data')
+      attr.value = arr[i]
+      li.setAttributeNode(attr)
+      // li.setAttribute('data', arr[i]) 和上面效果一样
+      // console.log(attr)
+      let textNode = document.createTextNode(arr[i])
+      li.appendChild(textNode)
+      ul.appendChild(li)
+    }
+    // 事件代理
+    ul.addEventListener('click', (e) => {
+      if (e.target && e.target.nodeName === 'LI') {
+        console.log(e.target.innerText)
+      }
+    })
+    bodyDoms[0].appendChild(ul)
+  </script>
+</body>
+</html>
