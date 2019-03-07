@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>ajax</title>
+</head>
+<body>
+  <script>
+    // ajax anynchronous javascript and xml (异步的JavaScript 和 xml)
+    let http = new XMLHttpRequest()
+    let option = {
+      method: 'GET',
+      url: '/sad/asd?a=3&c=r',
+      async: true // 异步执行 必须为 true
+    }
+    // 发送请求
+    http.open(option.method, option.url, option.async)
+    http.send()
+    // 响应
+    // console.log(http.response) 
+    http.responseText
+    http.responseXML
+    // 3个重要属性
+    //  onreadystatechange
+    // readyState 0 未建立连接 1 建立连接 2 请求已接收 3 请求已处理 4 完成
+    //  status 200 404
+    http.onreadystatechange = function () {
+      if (http.readyState === 4 && http.status === 200) {
+        console.log(http.responseText)
+      }
+    }
+  </script>
+</body>
+</html>
