@@ -62,6 +62,7 @@ Promise.all([say('hello'), say('world')]).then(res => {
   // res => [hello, world]
   console.log(...res)
 })
+// promise 是同步的, 但then()是异步的
 
 
  
